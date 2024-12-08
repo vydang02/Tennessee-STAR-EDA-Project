@@ -44,13 +44,10 @@ dim(STAR)
 
     ## [1] 11598    47
 
-In this project, you will analyze the STAR data in two parts and write a
-conclusion. In the first part, you will perform Exploratory Data
-Analysis on particular variables in the STAR data and interpret your
-results. In the second section, you will be directed to use particular
-programming techniques, but you may complete them using the data in ways
-you think are useful or interesting. In the final section, you will
-summarize your findings using easy to read markdown and hidden R code.
+In this project, I will analyze the STAR data in two parts. In the first part, I will perform Exploratory Data
+Analysis on particular variables in the STAR data and interpret my
+results. In the second section, I will use particular
+programming techniques.
 
 ## Part 1: Basic Data Visualization
 
