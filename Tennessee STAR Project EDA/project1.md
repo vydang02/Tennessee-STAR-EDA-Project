@@ -52,13 +52,6 @@ programming techniques, but you may complete them using the data in ways
 you think are useful or interesting. In the final section, you will
 summarize your findings using easy to read markdown and hidden R code.
 
-### Rubric
-
-- Part 1: 40%
-- Part 2: 40%
-- Part 3: 15%
-- Overall clarity and formatting: 5%
-
 ## Part 1: Basic Data Visualization
 
 ### Marginal Distributions
@@ -72,7 +65,7 @@ in the STAR data set:
 ggplot(STAR, aes(x = gender)) + geom_bar() + labs(y = "Number of students")
 ```
 
-![](project1_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](unnamed-chunk-3-1.png)
 
 - `stark`
 
@@ -81,7 +74,7 @@ ggplot(STAR, aes(x = stark)) + geom_bar() + labs(x = "STAR class type in kinderg
 y = "Number of students")
 ```
 
-![](project1_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](unnamed-chunk-4-1.png)
 
 - `readk`
 
@@ -93,7 +86,7 @@ y = "Number of students")
 
     ## Warning: Removed 5809 rows containing non-finite values (`stat_count()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](unnamed-chunk-5-1.png)
 
 - `mathk`
 
@@ -105,7 +98,7 @@ y = "Number of students")
 
     ## Warning: Removed 5727 rows containing non-finite values (`stat_count()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](unnamed-chunk-6-1.png)
 
 - `experiencek`
 
@@ -117,7 +110,7 @@ y = "Number of teachers")
 
     ## Warning: Removed 5294 rows containing non-finite values (`stat_count()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](unnamed-chunk-7-1.png)
 
 For each variable, look up the description of the variable in the `STAR`
 help page and use to give a better label to the scale for the variable.
@@ -157,7 +150,7 @@ set:
 ggplot(STAR, aes(x = stark, fill = gender)) + geom_bar()
 ```
 
-![](project1_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](unnamed-chunk-8-1.png)
 
 - `readk` and `read1`
 
@@ -171,7 +164,7 @@ ggplot(STAR, aes(x = readk, y = read1)) + geom_point() + geom_smooth(stat = "smo
 
     ## Warning: Removed 7587 rows containing missing values (`geom_point()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](unnamed-chunk-9-1.png)
 
 - Sum the `readk` and `mathk` and `stark`
 
@@ -182,7 +175,7 @@ ggplot(stark_sum, aes(x = stark, y = sum_readk_mathk)) + geom_point()
 
     ## Warning: Removed 5812 rows containing missing values (`geom_point()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](unnamed-chunk-10-1.png)
 
 - Using a facet plot, repeat the previous plot also adding `experiencek`
 
@@ -193,9 +186,9 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
     ## Warning: Removed 5812 rows containing missing values (`geom_point()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](unnamed-chunk-11-1.png)
 
-#### Interpreation of results
+#### Interpretation of results
 
 Write a brief paragraph about what you observe in these plots. What do
 we learn from these plots? Why would the 3 and 4 plot be particularly
@@ -644,7 +637,7 @@ ggplot(STAR, aes(x=school3)) + geom_bar() + coord_flip() + labs(x= "Number of sc
 y = "School type in 3rd grade")
 ```
 
-![](project1_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](unnamed-chunk-26-1.png)
 
 ``` r
 ggplot(STAR, aes(x=school3, y=math3)) + stat_summary(fun = mean) +
@@ -654,7 +647,7 @@ y = "Average math scaled score in 3rd grade")
 
     ## Warning: Removed 4 rows containing missing values (`geom_segment()`).
 
-![](project1_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](unnamed-chunk-27-1.png)
 
 ``` r
 ggplot(STAR, aes(x = readk, y = mathk)) + geom_bin_2d() + facet_grid(schoolk ~ ethnicity) +
@@ -664,8 +657,8 @@ ggtitle("Total math and reading scaled score in kindergarten by school type and 
 theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![](project1_files/figure-gfm/unnamed-chunk-28-1.png)<!-- --> Plot 1 is
-especially useful when there are many categories or when category names
+![](unnamed-chunk-28-1.png)
+Plot 1 is especially useful when there are many categories or when category names
 are lengthy. Since geom_bar() by default counts the frequency of each
 category, we would interpret this plot as showing the number of schools
 in each type of school category in the third grade. Here, we can see
