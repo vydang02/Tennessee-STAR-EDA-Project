@@ -658,6 +658,8 @@ theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ![](unnamed-chunk-28-1.png)
+
+
 Plot 1 is especially useful when there are many categories or when category names
 are lengthy. Since geom_bar() by default counts the frequency of each
 category, we would interpret this plot as showing the number of schools
