@@ -47,13 +47,13 @@ dim(STAR)
 In this project, I will analyze the STAR data in two parts. In the first part, I will perform Exploratory Data
 Analysis on particular variables in the STAR data and interpret my
 results. In the second section, I will use particular
-programming techniques.
+programming techniques in R to perform deeper EDA for this dataset.
 
 ## Part 1: Basic Data Visualization
 
 ### Marginal Distributions
 
-Provide plots of the marginal distributions of the following variables
+Plots of the marginal distributions of the following variables
 in the STAR data set:
 
 - `gender`
@@ -109,13 +109,12 @@ y = "Number of teachers")
 
 ![](unnamed-chunk-7-1.png)
 
-For each variable, look up the description of the variable in the `STAR`
-help page and use to give a better label to the scale for the variable.
+For each variable, I looked up the description of the variable in the `STAR`
+help page and then used to give a better label to the scale for the variable.
 
-#### Interpreation of results
+#### Interpretation of results
 
-Write a brief paragraph about what you observe in these plots. What
-questions would identify for further study based on your plots?
+What I observed in these plots:
 
 • Gender: There are more male students in the STAR dataset than female
 students. 
@@ -153,8 +152,8 @@ class types?
 
 ### Joint and Conditional Distributions
 
-Provide plots of either joint distributions or conditional distributions
-as appropriate for the following pairs of variables in the STAR data
+Some plots of joint distributions and conditional distributions
+as appropriate for some pairs of variables in the STAR data
 set:
 
 - `gender` and `stark`
@@ -179,7 +178,7 @@ ggplot(STAR, aes(x = readk, y = read1)) + geom_point() + geom_smooth(stat = "smo
 
 ![](unnamed-chunk-9-1.png)
 
-- Sum the `readk` and `mathk` and `stark`
+- Sum of `readk` and `mathk` and `stark`
 
 ``` r
 stark_sum <- STAR |> mutate(sum_readk_mathk = readk + mathk)
@@ -190,7 +189,7 @@ ggplot(stark_sum, aes(x = stark, y = sum_readk_mathk)) + geom_point()
 
 ![](unnamed-chunk-10-1.png)
 
-- Using a facet plot, repeat the previous plot also adding `experiencek`
+- A facet plot repeating the previous plot and adding `experiencek`
 
 ``` r
 ggplot(stark_sum, aes(x = stark, y = sum_readk_mathk)) + geom_point() + facet_wrap(~experiencek) +
@@ -202,11 +201,6 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ![](unnamed-chunk-11-1.png)
 
 #### Interpretation of results
-
-Write a brief paragraph about what you observe in these plots. What do
-we learn from these plots? Why would the 3 and 4 plot be particularly
-important for the people fielding this study (based on the quoted
-paragraphs above)?
 
 Plot 1 may reveal whether certain class types have a gender imbalance,
 which could be crucial for understanding social dynamics within the
@@ -239,8 +233,7 @@ highlight the most effective environments for student learning.
 
 ### Numerical Summaries
 
-Using tools we have discussed for computing numerical summaries, compute
-the following:
+I will use some tools to compute numerical summaries:
 
 - The proportion of students in each type of STAR class in kindergarten
   (`stark`).
@@ -277,7 +270,7 @@ STAR |> group_by(stark)|> count(gender)
     ## 8 <NA>         female  2381
     ## 9 <NA>         <NA>      20
 
-- Compute the median reading and math scores in kindergarten for
+- The median reading and math scores in kindergarten for
   students in each type of STAR class.
 
 ``` r
@@ -294,7 +287,7 @@ arrange(desc(med_readk))
     ## 3 regular+aide       430       478
     ## 4 <NA>                NA        NA
 
-- Repeat the previous computation also grouping by `experiencek`.
+- Previous computation but grouping by `experiencek`.
 
 ``` r
 STAR |> group_by(stark, experiencek) |> summarize(med_readk = median(readk, na.rm = TRUE),
@@ -321,8 +314,8 @@ arrange(desc(med_mathk))
     ## 10 regular               16      445        500
     ## # ℹ 63 more rows
 
-- Create a column that shows the difference in `math1` and `mathk` for
-  each student. Compute the mean difference for students in each type of
+- A column that shows the difference in `math1` and `mathk` for
+  each student and the mean difference for students in each type of
   `stark` class.
 
 ``` r
@@ -338,8 +331,7 @@ summarize(avg_math_1_k_dif = mean(math_1_k_dif, na.rm = TRUE))
     ## 3 regular+aide             42.8
     ## 4 <NA>                    NaN
 
-- Within each type of STAR class, subtract the median `mathk` score from
-  each student’s score. Compute the mean centered-math-score for each
+- Within each type of STAR class, the mean centered-math-score for each
   level of `experiencek`.
 
 ``` r
@@ -365,11 +357,6 @@ summarize(avg_med_mathk_centered = mean(med_mathk_centered))
 
 #### Interpretation
 
-Write a brief paragraph about what you observe in these numerical
-summaries. Again, think about what information the study creators wanted
-to ask and how these computations are useful to explore the data in
-light of those considerations.
-
 The proportions of students in each type of STAR class: Fewer students
 are assigned to the small class types (16%) than regular or
 regular-with-aide class (~19%).
@@ -391,20 +378,13 @@ By centering math scores around the class median, one can examine
 whether all students benefit similarly from their classroom type or if
 some subgroups (e.g., distinguished by experiencek) benefit more.
 
-## Part 2: Additional Activities
-
-In this section, you will be directed to use specific tools, but you may
-apply them to the data set as you see fit. In each section, write a
-brief explanation of how you are using the tool.
+## Part 2: EDA using some R programming functions
 
 ### Table Operations
 
 #### `group_by`, `summarize`, and `mutate`
 
-Use `group_by`, `summarize`, and `mutate` to modify and summarize the
-data in ways not performed in the previous section. Perform three
-separate applications of these tools. Write a paragraph explaining your
-intent and what you learn from the results of the computations.
+Three separate applications of these tools.
 
 ``` r
 # 3rd grade total average math and reading scaled score based on school type
@@ -491,11 +471,7 @@ STAR teachers.
 
 #### `filter` and `select`
 
-Use the `filter` and `select` functions to drill down into interesting
-subsets of the data. You may use `across(everything(), ...)` in a
-`mutate` or `summarize` as a reason for selecting particular columns.
-Write a paragraph explaining your goals and how you can use these
-functions to achieve them.
+Some EDA using 'filter' and 'select'
 
 ``` r
 # Grade 3 highest math and reading scaled score by ethnicity
@@ -532,11 +508,8 @@ subjects.
 
 #### Avoid repetition
 
-Look over the previous sections of this project and identify repetitive
-or similar code that could replaced with a function. You may use
-optional arguments or the `...` argument, but they are not required.
-
-Explain your function’s usage and demonstrate it on the STAR data.
+I identified repetitive
+or similar code that could be replaced with a function. Then I created some functions and applied it to the STAR data.
 
 ``` r
 group_by_column <- function(STAR, column){
@@ -589,12 +562,8 @@ grouping scenarios.
 
 #### Predicate functions
 
-Identify some feature of the the columns in the STAR table that can be
-either true or false. Write a predicate function to identify these
-columns and applying it using the `select` function. Summarize the
-result and explain why it was useful. You may find it helpful to use
-`filter` first to restrict your attention to a particular subset of the
-data.
+A predicate function to identify columns in the STAR table that can be
+either true or false and applying it using the `select` function. 
 
 ``` r
 is_integer <- function(STAR, column) {
@@ -634,15 +603,8 @@ processing process easier.
 
 ### Advanced ggplot
 
-Create one or plots that make use of the following advanced ggplot
-features. Across your plots, use each feature at least once.
-
-- coordinate systems
-- added `stat_*` layers or alternate `stat` arguments for a `geom_*`
-  functions
-- `facet_grid`
-
-Write a paragraph interpreting your plots.
+Some plots that make use of some advanced ggplot
+features. 
 
 ``` r
 STAR <- na.omit(STAR)
@@ -697,13 +659,6 @@ kindergarten. Overall, the trend is that as the reading scores increase,
 the math scores also increase.
 
 ## Part 3: Conclusion
-
-Write two to three concluding paragraphs about what you have learned
-about the Tennessee STAR study and the effect of different classroom
-sizes on student achievement. Use markdown to make the formatting of
-your conclusion easy to read. Use the features of R chunks and inline R
-to include calculations without burdening the reader with understanding
-R code.
 
 Based on the findings I have analyzed from the Tennessee STAR study, we
 have observed significant evidence indicating that smaller classroom
