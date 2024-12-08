@@ -121,20 +121,36 @@ Write a brief paragraph about what you observe in these plots. What
 questions would identify for further study based on your plots?
 
 • Gender: There are more male students in the STAR dataset than female
-students. • STAR kindergarten class type (stark): Fewer kindergarten
+students. 
+
+• STAR kindergarten class type (stark): Fewer kindergarten
 students are assigned to the STARsmall class size, while the number of
 students assigned to STAR regular and regular-with-aide class type are
 higher and roughly the same. A lot of students weren’t assigned to any
-STAR class type. • Reading score (readk): Most kindergarten students
-scored around 420 to 470 for the readingscores. • Math score (mathk):
-Most kindergarten students scored around 470 to 560 for the math scores.
+STAR class type. 
+
+• Reading score (readk): Most kindergarten students
+scored around 420 to 470 for the readingscores. 
+
+• Math score (mathk): Most kindergarten students scored around 470 to 560 for the math scores.
+
 • Teaching experience (experiencek): There’s a trend towards newer to
 12-year-teachers, with fewer teachers of 15-30 years of teaching
-experience. From the plots, several questions could arise for further
-study, including: • How do math and reading scores correlate with each
-other? (Bivariate analysis.) • Does gender correlate with math or
-reading scores, and if so, how? • How does teacher experience affect
-student achievement in math and reading scores? • Are there any
+experience. 
+
+From the plots, several questions could arise for further
+study, including: 
+
+• How do math and reading scores correlate with each
+other? (Bivariate analysis.) 
+
+• Does gender correlate with math or
+reading scores, and if so, how? 
+
+• How does teacher experience affect
+student achievement in math and reading scores? 
+
+• Are there any
 significant differences in student achievement across different STAR
 class types?
 
